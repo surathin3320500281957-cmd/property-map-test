@@ -1241,8 +1241,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
       </g>
       <g id="pins"></g>
     </svg>
-    <div class="pin-badge">● หมุด = ตำแหน่งพิกัดจริง (ตัวอย่าง <b>15</b> สาขา)</div>
-    <div class="map-hint">คลิกจังหวัดหรือหมุดเพื่อดูรายละเอียดสาขา</div>
+    <div class="pin-badge">● หมุด = ตำแหน่งพิกัดจริง (ตัวอย่าง <b>15</b> สาขา) — คลิกหมุดเพื่อเปิดแผนที่จริงทันที</div>
+    <div class="map-hint">คลิกจังหวัดดูข้อมูลสาขา · คลิกหมุดดูพื้นที่จริง</div>
   </div>
 
   <div class="sidebar-right" id="detail-panel">
@@ -1409,6 +1409,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     circle.addEventListener('click', (e) => {
       e.stopPropagation();
       selectElement(circle, key);
+      openRealMap(d, [lat, lon]);
     });
     pinsGroup.appendChild(circle);
   });
