@@ -1338,12 +1338,27 @@ svg.leaflet-image-layer.leaflet-interactive path {
     });
   }
 
+  // ── ตัวช่วยกลาง: เปิด/ปิดเอฟเฟกต์ยกตัว + ขอบเรืองแสง ใช้ร่วมกันทั้งการเลือกจังหวัดเดี่ยวและการกรองภาค ──
+  function setProvinceHighlight(p, on) {
+    if (on) {
+      p.style.stroke = 'var(--amber)';
+      p.style.strokeWidth = '3.2';
+      p.style.filter = 'drop-shadow(0 0 7px rgba(201,146,61,0.95)) brightness(1.12) saturate(1.15)';
+      p.style.transform = 'translate(-5px, -5px)';
+    } else {
+      p.style.stroke = 'rgba(255,255,255,0.55)';
+      p.style.strokeWidth = '';
+      p.style.filter = '';
+      p.style.transform = '';
+    }
+  }
+
   function applyFilter() {
     document.querySelectorAll('.province').forEach(p => {
       const key = p.getAttribute('data-key');
       const d = MOCK[key];
-      const dim = activeRegion !== null && d.region !== activeRegion;
-      p.style.opacity = dim ? 0.22 : 1;
+      const matches = activeRegion !== null && d.region === activeRegion;
+      setProvinceHighlight(p, matches);
     });
   }
 
@@ -1396,18 +1411,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
   // ── ทำให้เห็นชัดว่ากำลังเลือกจังหวัดไหนอยู่: ยกตัวขึ้น + ขอบเรืองแสง (ไม่จางส่วนอื่นแล้ว) ──
   function highlightProvinceOnMap(key) {
     document.querySelectorAll('.province').forEach(p => {
-      const isTarget = p.getAttribute('data-key') === key;
-      if (isTarget) {
-        p.style.stroke = 'var(--amber)';
-        p.style.strokeWidth = '3.2';
-        p.style.filter = 'drop-shadow(0 0 7px rgba(201,146,61,0.95)) brightness(1.12) saturate(1.15)';
-        p.style.transform = 'translate(-5px, -5px)';
-      } else {
-        p.style.stroke = 'rgba(255,255,255,0.55)';
-        p.style.strokeWidth = '';
-        p.style.filter = '';
-        p.style.transform = '';
-      }
+      setProvinceHighlight(p, p.getAttribute('data-key') === key);
     });
   }
 
