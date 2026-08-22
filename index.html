@@ -857,6 +857,10 @@ svg.leaflet-image-layer.leaflet-interactive path {
   .province:hover {
     filter: brightness(1.15) saturate(1.1);
   }
+  .province-shadow {
+    stroke: none;
+    pointer-events: none;
+  }
   .pin {
     fill: var(--amber);
     stroke: #fff;
@@ -1183,6 +1187,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
   <div class="map-wrap">
     <svg id="map-svg" viewBox="0 0 800 1471" xmlns="http://www.w3.org/2000/svg">
+      <g id="shadows"></g>
       <g id="provinces">
       <path id="p_AmnatCharoen" data-key="AmnatCharoen" class="province" d="M 735.43,430.83 L 734.79,431.49 L 732.10,432.25 L 730.89,435.69 L 728.90,438.34 L 729.39,440.67 L 728.75,441.74 L 729.47,444.07 L 728.79,445.48 L 726.99,446.38 L 725.83,447.68 L 725.74,449.01 L 727.08,449.12 L 725.15,454.23 L 725.17,458.98 L 724.64,460.83 L 723.56,462.16 L 719.68,464.72 L 719.91,466.79 L 718.70,471.02 L 718.89,474.06 L 722.24,475.43 L 721.54,479.13 L 719.08,480.18 L 717.75,481.72 L 718.64,482.79 L 718.13,484.23 L 717.39,484.34 L 717.28,485.25 L 716.28,485.19 L 716.52,484.27 L 715.82,483.99 L 715.67,483.29 L 716.88,482.79 L 715.50,480.66 L 715.05,480.72 L 715.07,481.38 L 714.33,481.16 L 714.20,481.72 L 713.91,480.79 L 713.23,480.98 L 713.25,480.05 L 712.53,479.96 L 712.64,480.66 L 711.30,479.98 L 710.79,478.66 L 710.01,479.83 L 709.48,479.83 L 708.48,478.74 L 708.52,477.13 L 707.97,477.37 L 706.74,475.98 L 704.51,475.09 L 704.11,473.67 L 703.07,474.56 L 701.71,473.58 L 699.98,473.65 L 698.81,472.45 L 695.76,471.97 L 693.76,470.88 L 691.96,471.23 L 691.09,471.97 L 691.94,472.93 L 693.89,473.50 L 694.48,474.63 L 692.34,475.67 L 692.26,477.44 L 689.01,478.57 L 689.99,482.29 L 688.48,482.62 L 687.85,483.44 L 686.70,483.36 L 685.98,484.71 L 683.80,483.20 L 682.44,482.92 L 681.95,480.42 L 680.91,480.70 L 680.47,479.90 L 679.77,480.66 L 677.71,479.92 L 678.45,479.13 L 677.99,478.55 L 678.28,476.63 L 676.92,477.48 L 675.84,477.46 L 676.73,475.93 L 675.76,474.65 L 676.52,474.15 L 675.74,472.91 L 676.37,472.39 L 676.33,471.25 L 675.72,470.99 L 675.97,469.75 L 674.46,469.93 L 674.17,469.25 L 675.02,466.27 L 674.13,465.18 L 675.36,464.40 L 674.72,462.77 L 676.06,459.72 L 675.69,459.02 L 677.96,455.93 L 677.60,454.43 L 676.86,453.80 L 677.54,452.97 L 677.24,452.47 L 677.82,450.97 L 677.35,450.45 L 678.71,450.25 L 678.60,448.99 L 682.01,445.57 L 682.12,442.72 L 683.48,442.33 L 684.66,440.76 L 683.20,438.80 L 687.65,431.12 L 695.82,429.48 L 701.14,430.64 L 702.88,431.62 L 706.08,431.66 L 707.88,431.14 L 709.75,431.86 L 711.02,431.70 L 711.98,425.96 L 710.18,425.35 L 708.86,425.65 L 706.36,422.48 L 708.69,421.54 L 710.41,422.91 L 711.13,422.93 L 712.76,422.45 L 713.78,421.45 L 715.09,421.71 L 717.00,420.93 L 718.11,418.38 L 720.48,416.77 L 721.97,416.71 L 724.26,415.49 L 724.89,413.81 L 726.29,414.47 L 726.91,413.86 L 729.96,417.97 L 730.21,419.25 L 729.62,421.37 L 731.64,427.05 L 733.01,429.33 L 735.43,430.83 Z"></path>
       <path id="p_AngThong" data-key="AngThong" class="province" d="M 304.49,563.50 L 304.57,564.81 L 307.48,566.14 L 307.63,567.25 L 308.50,568.31 L 307.50,569.86 L 307.65,572.21 L 306.74,574.41 L 306.59,577.26 L 305.55,578.52 L 306.59,580.02 L 307.03,582.29 L 306.67,583.51 L 307.37,584.42 L 307.37,589.03 L 305.95,589.38 L 303.98,590.78 L 302.03,590.75 L 301.65,590.12 L 299.91,590.21 L 299.80,586.44 L 298.83,583.90 L 296.37,584.07 L 295.07,585.03 L 293.08,585.09 L 290.79,585.97 L 287.67,585.14 L 286.78,586.20 L 284.64,585.73 L 284.07,586.27 L 282.54,586.05 L 279.91,583.16 L 280.04,580.83 L 278.94,579.41 L 278.81,578.35 L 280.27,576.91 L 278.22,573.47 L 278.89,572.71 L 280.85,572.58 L 281.91,570.79 L 280.12,567.49 L 280.76,566.48 L 280.87,564.31 L 279.87,561.54 L 280.32,558.28 L 281.91,557.65 L 282.05,557.08 L 282.94,556.47 L 286.06,556.25 L 288.06,557.84 L 288.61,557.23 L 289.88,557.06 L 289.62,556.32 L 291.26,555.95 L 292.40,557.58 L 292.51,558.91 L 293.61,559.80 L 294.99,559.54 L 296.26,561.50 L 299.10,560.30 L 299.51,560.72 L 299.49,563.11 L 301.33,562.87 L 304.49,563.50 Z"></path>
@@ -1344,11 +1349,30 @@ svg.leaflet-image-layer.leaflet-interactive path {
 
   renderRegionButtons();
 
+  function darken(hex, factor) {
+    const r = parseInt(hex.slice(1,3), 16) * factor;
+    const g = parseInt(hex.slice(3,5), 16) * factor;
+    const b = parseInt(hex.slice(5,7), 16) * factor;
+    return `rgb(${r|0}, ${g|0}, ${b|0})`;
+  }
+
+  const BEVEL_OFFSET = 5; // px คงที่ทุกจังหวัด (ไม่อิงข้อมูลแล้ว) จำลองขอบเข้มแบบภาพตัวอย่าง
+  const shadowsGroup = document.getElementById('shadows');
+
   document.querySelectorAll('.province').forEach(p => {
     const key = p.getAttribute('data-key');
     const d = MOCK[key];
     if (!d) return;
     const color = REGION_COLORS[d.region] || '#999999';
+
+    // ขอบเข้ม/เงาทึบ คงที่ทุกจังหวัดในภาคเดียวกัน — เมื่อวางต่อกันจะรวมเป็นขอบเดียวรอบภาค เหมือนก้อนตันเอียง
+    const shadowPath = p.cloneNode(false);
+    shadowPath.removeAttribute('id');
+    shadowPath.removeAttribute('class');
+    shadowPath.setAttribute('class', 'province-shadow');
+    shadowPath.setAttribute('fill', darken(color, 0.4));
+    shadowPath.setAttribute('transform', `translate(${BEVEL_OFFSET}, ${BEVEL_OFFSET})`);
+    shadowsGroup.appendChild(shadowPath);
 
     // ตัวจังหวัด — สีตามภาค สดใสชัดเจน
     p.style.fill = color;
@@ -1369,7 +1393,7 @@ svg.leaflet-image-layer.leaflet-interactive path {
     showDetail(MOCK[key], key);
   }
 
-  // ── ทำให้เห็นชัดว่ากำลังเลือกจังหวัดไหนอยู่: ยกตัวขึ้น + ขอบเรืองแสง + จังหวัดอื่นจางลง ──
+  // ── ทำให้เห็นชัดว่ากำลังเลือกจังหวัดไหนอยู่: ยกตัวขึ้น + ขอบเรืองแสง (ไม่จางส่วนอื่นแล้ว) ──
   function highlightProvinceOnMap(key) {
     document.querySelectorAll('.province').forEach(p => {
       const isTarget = p.getAttribute('data-key') === key;
@@ -1378,13 +1402,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
         p.style.strokeWidth = '3.2';
         p.style.filter = 'drop-shadow(0 0 7px rgba(201,146,61,0.95)) brightness(1.12) saturate(1.15)';
         p.style.transform = 'translate(-5px, -5px)';
-        p.style.opacity = '1';
       } else {
         p.style.stroke = 'rgba(255,255,255,0.55)';
         p.style.strokeWidth = '';
         p.style.filter = '';
         p.style.transform = '';
-        p.style.opacity = '0.4';
       }
     });
   }
