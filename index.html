@@ -1054,30 +1054,46 @@ svg.leaflet-image-layer.leaflet-interactive path {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    background: var(--jade-1);
+  }
+  .modal-head .selected-label {
+    font-family: 'Space Mono', monospace;
+    font-size: 0.66rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--amber-deep);
+    margin-bottom: 2px;
   }
   .modal-head h3 {
     font-family: 'Chonburi', serif;
     font-weight: 400;
-    font-size: 1.1rem;
+    font-size: 1.25rem;
     color: var(--jade-6);
     margin: 0;
   }
   .modal-head .sub {
     font-family: 'Space Mono', monospace;
-    font-size: 0.72rem;
-    color: #8a8371;
-    margin-top: 2px;
+    font-size: 0.74rem;
+    color: #5a6b5f;
+    margin-top: 3px;
   }
   .modal-close {
-    background: none;
-    border: none;
-    font-size: 1.3rem;
+    background: #fff;
+    border: 1px solid var(--line);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    font-size: 1.1rem;
     line-height: 1;
-    color: #8a8371;
+    color: #6b6558;
     cursor: pointer;
-    padding: 4px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.12s ease, color 0.12s ease;
   }
-  .modal-close:hover { color: var(--rust); }
+  .modal-close:hover { background: var(--rust); color: #fff; border-color: var(--rust); }
   .layer-toggle {
     display: flex;
     gap: 6px;
@@ -1101,6 +1117,24 @@ svg.leaflet-image-layer.leaflet-interactive path {
   #real-map {
     flex: 1;
     position: relative;
+  }
+  /* ปรับปุ่มซูม +/- ของ Leaflet ให้เข้าธีมสีของหน้านี้ */
+  .leaflet-control-zoom {
+    border: none !important;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.18) !important;
+  }
+  .leaflet-control-zoom a {
+    width: 36px !important;
+    height: 36px !important;
+    line-height: 36px !important;
+    font-size: 1.2rem !important;
+    background: #fff !important;
+    color: var(--jade-6) !important;
+    font-weight: 700;
+  }
+  .leaflet-control-zoom a:hover {
+    background: var(--jade-6) !important;
+    color: #fff !important;
   }
   .map-error-note {
     position: absolute;
@@ -1254,10 +1288,11 @@ svg.leaflet-image-layer.leaflet-interactive path {
   <div class="modal-box">
     <div class="modal-head">
       <div>
+        <div class="selected-label">📍 คุณเลือกดูพื้นที่ของ</div>
         <h3 id="modal-title">พื้นที่จริง</h3>
         <div class="sub" id="modal-coords">—</div>
       </div>
-      <button class="modal-close" id="modal-close">✕</button>
+      <button class="modal-close" id="modal-close" title="ปิด">✕</button>
     </div>
     <div class="layer-toggle">
       <button class="layer-btn active" data-layer="street">แผนที่ถนน</button>
@@ -1509,7 +1544,8 @@ svg.leaflet-image-layer.leaflet-interactive path {
         return;
       }
       if (!realMap) {
-        realMap = L.map('real-map');
+        realMap = L.map('real-map', { zoomControl: false });
+        L.control.zoom({ position: 'topright' }).addTo(realMap);
         currentLayer = tileLayers.street();
         currentLayer.addTo(realMap);
         attachTileWatcher(currentLayer);
